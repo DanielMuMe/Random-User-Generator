@@ -1,85 +1,66 @@
-/* Estilos Generales */
 body {
-  font-family: Arial, sans-serif;
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
-  color: #333;
+  background: #f4f4f4;
 }
 
-#bottom-menu {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #333;
-  display: flex;
-  justify-content: space-around;
-  padding: 10px 0;
-}
-
-#bottom-menu button {
-  background-color: #555;
-  border: none;
-  color: white;
+header {
   padding: 10px;
-  cursor: pointer;
+  background: #6200ea;
+  display: flex;
+  gap: 10px;
 }
 
-#bottom-menu button:hover {
-  background-color: #777;
+header input, header select {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
 }
 
-#content {
-  padding-bottom: 60px; /* Espacio para el menú inferior */
+main {
+  padding: 15px;
 }
 
 .tab {
-  padding: 20px;
-}
-
-.hidden {
   display: none;
 }
 
-h2 {
-  color: #333;
+.tab.active {
+  display: block;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  background-color: white;
-  margin: 5px 0;
+.user-card {
+  background: white;
   padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
-#theme-toggle {
+.user-card img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.bottom-menu {
   position: fixed;
-  top: 10px;
-  right: 10px;
-  padding: 10px;
-  background-color: #333;
-  color: white;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background: #6200ea;
+}
+
+.bottom-menu button {
+  flex: 1;
+  padding: 15px;
   border: none;
-  cursor: pointer;
-}
-
-/* Modo Oscuro */
-body.dark-mode {
-  background-color: #333;
-  color: #fff;
-}
-
-body.dark-mode h2 {
-  color: #fff;
-}
-
-body.dark-mode li {
-  background-color: #555;
-  color: #fff;
+  background: none;
+  color: white;
+  font-size: 16px;
 }

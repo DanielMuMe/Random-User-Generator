@@ -1,86 +1,78 @@
-// Variables globales
-let users = [];
-let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+let allUsers = [];
+let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
 
-// Función para cambiar de pestaña
-function changeTab(tabId) {
-  document.querySelectorAll('.tab').forEach(tab => tab.classList.add('hidden'));
-  document.getElementById(tabId).classList.remove('hidden');
+function switchTab(tabId) {
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  document.getElementById(tabId).classList.add("active");
+
+  if (tabId === "home") loadUsers();
+  if (tabId === "search") renderSearch();
+  if (tabId === "favorites") renderFavorites();
+  if (tabId === "combine") combineNames();
 }
 
-// Función para cargar usuarios desde la API
-async function loadUsers() {
-  const apiKey = 'H4R6-V09I-TJIK-EQBT'; // Reemplaza con tu clave de API real
-  try {
-    const response = await fetch(`https://randomuser.me/api/?results=150`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`, // Incluye la clave de API en los encabezados
-        'Content-Type': 'application/json'
-      }
+function loadUsers() {
+    const apiKey = 'H4R6-V09I-TJIK-EQBT'; // Reemplaza con tu clave de API real
+  fetch('https://randomuser.me/api/?results=20')
+    .then(res => res.json())
+    .then(data => {
+      allUsers = data.results;
+      renderUsers("home", allUsers);
     });
-    if (!response.ok) {
-      throw new Error('Error al cargar usuarios');
-    }
-    const data = await response.json();
-    users = data.results;
-    renderUsers(users);
-  } catch (error) {
-    console.error('Error al cargar usuarios:', error);
-  }
 }
 
-// Función para renderizar usuarios
-function renderUsers(userList) {
-  const userListElement = document.getElementById('user-list');
-  userListElement.innerHTML = '';
-  userList.forEach(user => {
-    const li = document.createElement('li');
-    li.textContent = `${user.name.first} ${user.name.last}`;
-    li.onclick = () => toggleFavorite(user);
-    userListElement.appendChild(li);
+function renderUsers(tabId, users) {
+  const container = document.getElementById(tabId);
+  container.innerHTML = "";
+  users.forEach(user => {
+    const card = document.createElement("div");
+    card.className = "user-card";
+    card.innerHTML = `
+      <img src="${user.picture.medium}" />
+      <div>
+        <strong>${user.name.first} ${user.name.last}</strong><br/>
+        <small>${user.gender} - ${user.email}</small><br/>
+        <button onclick="addFavorite('${user.login.uuid}')">❤️ Favorito</button>
+      </div>
+    `;
+    container.appendChild(card);
   });
 }
 
-// Función para filtrar usuarios
-function filterUsers() {
-  const query = document.getElementById('search-input').value.toLowerCase();
-  const filteredUsers = users.filter(user =>
-    `${user.name.first} ${user.name.last}`.toLowerCase().includes(query)
+function renderSearch() {
+  const query = document.getElementById("searchInput").value.toLowerCase();
+  const gender = document.getElementById("genderFilter").value;
+  const filtered = allUsers.filter(u =>
+    u.name.first.toLowerCase().includes(query) &&
+    (gender === "" || u.gender === gender)
   );
-  renderUsers(filteredUsers);
+  renderUsers("search", filtered);
 }
 
-// Función para agregar/quitar favoritos
-function toggleFavorite(user) {
-  const index = favorites.findIndex(fav => fav.login.uuid === user.login.uuid);
-  if (index === -1) {
+function addFavorite(id) {
+  const user = allUsers.find(u => u.login.uuid === id);
+  if (user && !favorites.some(f => f.login.uuid === id)) {
     favorites.push(user);
-  } else {
-    favorites.splice(index, 1);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    alert("Agregado a favoritos");
   }
-  localStorage.setItem('favorites', JSON.stringify(favorites));
-  renderFavorites();
 }
 
-// Función para renderizar favoritos
 function renderFavorites() {
-  const favoriteListElement = document.getElementById('favorite-list');
-  favoriteListElement.innerHTML = '';
-  favorites.forEach(fav => {
-    const li = document.createElement('li');
-    li.textContent = `${fav.name.first} ${fav.name.last}`;
-    favoriteListElement.appendChild(li);
-  });
+  renderUsers("favorites", favorites);
 }
 
-// Función para cambiar tema
-function toggleTheme() {
-  document.body.classList.toggle('dark-mode');
+function combineNames() {
+  const container = document.getElementById("combine");
+  container.innerHTML = "<h2>Nombres Combinados</h2>";
+  if (allUsers.length < 2) return;
+
+  const [u1, u2] = [allUsers[0], allUsers[1]];
+  const combined = `${u1.name.first.slice(0, 3)}${u2.name.first.slice(3)}`;
+  container.innerHTML += `<p>${u1.name.first} + ${u2.name.first} = <strong>${combined}</strong></p>`;
 }
 
-// Inicialización
-document.addEventListener('DOMContentLoaded', () => {
-  loadUsers();
-  renderFavorites();
-});
+document.getElementById("searchInput").addEventListener("input", renderSearch);
+document.getElementById("genderFilter").addEventListener("change", renderSearch);
+
+window.onload = () => switchTab("home");

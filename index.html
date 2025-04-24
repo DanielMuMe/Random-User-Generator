@@ -1,52 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aplicación de Usuarios</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Random User App</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Menú Inferior -->
-  <div id="bottom-menu">
-    <button onclick="changeTab('home')">Inicio</button>
-    <button onclick="changeTab('search')">Buscar</button>
-    <button onclick="changeTab('favorites')">Favoritos</button>
-    <button onclick="changeTab('info')">Info</button>
-  </div>
+  <header>
+    <input type="text" id="searchInput" placeholder="Buscar por nombre..." />
+    <select id="genderFilter">
+      <option value="">Todos</option>
+      <option value="male">Hombres</option>
+      <option value="female">Mujeres</option>
+    </select>
+  </header>
 
-  <!-- Contenido Principal -->
-  <div id="content">
-    <!-- Pestaña Inicio -->
-    <div id="home" class="tab">
-      <h2>Bienvenido</h2>
-      <p>Explora usuarios aleatorios y agrega tus favoritos.</p>
-    </div>
+  <main id="tabs">
+    <section id="home" class="tab active"></section>
+    <section id="search" class="tab"></section>
+    <section id="favorites" class="tab"></section>
+    <section id="combine" class="tab"></section>
+    <section id="info" class="tab">
+      <h2>Acerca de</h2>
+      <p>Esta aplicación usa la API Random User Generator para mostrar perfiles aleatorios. Proyecto de aprendizaje.</p>
+    </section>
+    <section id="config" class="tab"><h2>Configuraciones</h2></section>
+  </main>
 
-    <!-- Pestaña Buscar -->
-    <div id="search" class="tab hidden">
-      <h2>Buscar Usuarios</h2>
-      <input type="text" id="search-input" placeholder="Buscar por nombre..." oninput="filterUsers()">
-      <ul id="user-list"></ul>
-    </div>
+  <nav class="bottom-menu">
+    <button onclick="switchTab('home')">Inicio</button>
+    <button onclick="switchTab('search')">Buscar</button>
+    <button onclick="switchTab('favorites')">Favoritos</button>
+    <button onclick="switchTab('combine')">Combinar</button>
+  </nav>
 
-    <!-- Pestaña Favoritos -->
-    <div id="favorites" class="tab hidden">
-      <h2>Tus Favoritos</h2>
-      <ul id="favorite-list"></ul>
-    </div>
-
-    <!-- Pestaña Info -->
-    <div id="info" class="tab hidden">
-      <h2>Información</h2>
-      <p>Esta aplicación utiliza la API Random User Generator para listar usuarios aleatorios.</p>
-      <p>Funcionalidad original: Modo oscuro/claro.</p>
-    </div>
-  </div>
-
-  <!-- Botón para cambiar tema -->
-  <button id="theme-toggle" onclick="toggleTheme()">Cambiar Tema</button>
-
-  <script src="script.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
