@@ -12,7 +12,7 @@ function changeTab(tabId) {
 async function loadUsers() {
   const apiKey = 'H4R6-V09I-TJIK-EQBT'; // Reemplaza con tu clave de API real
   try {
-    const response = await fetch(`https://randomuser.me/api/?results=10`, {
+    const response = await fetch(`https://randomuser.me/api/?results=150`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${apiKey}`, // Incluye la clave de API en los encabezados
