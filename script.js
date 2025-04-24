@@ -13,7 +13,7 @@ function switchTab(tabId) {
 
 function loadUsers() {
     const apiKey = 'H4R6-V09I-TJIK-EQBT'; // Reemplaza con tu clave de API real
-  fetch('https://randomuser.me/api/?results=10')
+  fetch('https://randomuser.me/api/?results=150')
     .then(res => res.json())
     .then(data => {
       allUsers = data.results;
