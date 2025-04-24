@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplicación de Usuarios</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Menú Inferior -->
+  <div id="bottom-menu">
+    <button onclick="changeTab('home')">Inicio</button>
+    <button onclick="changeTab('search')">Buscar</button>
+    <button onclick="changeTab('favorites')">Favoritos</button>
+    <button onclick="changeTab('info')">Info</button>
+  </div>
+
+  <!-- Contenido Principal -->
+  <div id="content">
+    <!-- Pestaña Inicio -->
+    <div id="home" class="tab">
+      <h2>Bienvenido</h2>
+      <p>Explora usuarios aleatorios y agrega tus favoritos.</p>
+    </div>
+
+    <!-- Pestaña Buscar -->
+    <div id="search" class="tab hidden">
+      <h2>Buscar Usuarios</h2>
+      <input type="text" id="search-input" placeholder="Buscar por nombre..." oninput="filterUsers()">
+      <ul id="user-list"></ul>
+    </div>
+
+    <!-- Pestaña Favoritos -->
+    <div id="favorites" class="tab hidden">
+      <h2>Tus Favoritos</h2>
+      <ul id="favorite-list"></ul>
+    </div>
+
+    <!-- Pestaña Info -->
+    <div id="info" class="tab hidden">
+      <h2>Información</h2>
+      <p>Esta aplicación utiliza la API Random User Generator para listar usuarios aleatorios.</p>
+      <p>Funcionalidad original: Modo oscuro/claro.</p>
+    </div>
+  </div>
+
+  <!-- Botón para cambiar tema -->
+  <button id="theme-toggle" onclick="toggleTheme()">Cambiar Tema</button>
+
+  <script src="scripst.js"></script>
+</body>
+</html>

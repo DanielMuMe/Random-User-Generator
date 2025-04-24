@@ -1,0 +1,85 @@
+/* Estilos Generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+#bottom-menu {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+#bottom-menu button {
+  background-color: #555;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#bottom-menu button:hover {
+  background-color: #777;
+}
+
+#content {
+  padding-bottom: 60px; /* Espacio para el menú inferior */
+}
+
+.tab {
+  padding: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+h2 {
+  color: #333;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: white;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#theme-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Modo Oscuro */
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode h2 {
+  color: #fff;
+}
+
+body.dark-mode li {
+  background-color: #555;
+  color: #fff;
+}
