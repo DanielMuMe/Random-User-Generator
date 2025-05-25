@@ -5,8 +5,8 @@ const STATIC_ASSETS = [
   "style.css",
   "script.js",
   "manifest.json",
-  "icon-192x.png",
-  "icon-512x.png",
+  "icon-192.png",
+  "icon-512.png",
 ];
 
 self.addEventListener("install", event => {
