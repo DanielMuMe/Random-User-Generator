@@ -1,27 +1,20 @@
 {
   "name": "Random User App",
   "short_name": "RandomUser",
-  "description": "Esta aplicación usa la API Random User Generator para mostrar perfiles aleatorios. Proyecto de aprendizaje.",
-  "start_url": ".",
+  "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#6200ea",
-  "theme_color": "#6200ea",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "icons/icon-192x.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icono-512x.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
-    },
-    {
-      "src": "icons/splash-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
     }
   ]
 }
