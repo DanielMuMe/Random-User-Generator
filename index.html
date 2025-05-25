@@ -34,6 +34,13 @@
     <button onclick="switchTab('favorites')">Favoritos</button>
     <button onclick="switchTab('combine')">Combinar</button>
   </nav>
+  <!-- ...existing code... -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
+<!-- ...existing code... -->
 
   <script src="script.js"></script>
 </body>
