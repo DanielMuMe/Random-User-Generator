@@ -5,8 +5,8 @@ const STATIC_ASSETS = [
   "style.css",
   "script.js",
   "manifest.json",
-  "icons/icon-192.png",
-  "icons/icon-512.png",
+  "icons/icon-192x.png",
+  "icons/icon-512x.png",
   "icons/splash-512.png"
 ];
 
