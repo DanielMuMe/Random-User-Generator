@@ -6,13 +6,6 @@
   <title>Random User App</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<!-- ...existing code... -->
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
-</script>
-<!-- ...existing code... -->
 <body>
   <header>
     <input type="text" id="searchInput" placeholder="Buscar por nombre..." />
@@ -41,6 +34,13 @@
     <button onclick="switchTab('favorites')">Favoritos</button>
     <button onclick="switchTab('combine')">Combinar</button>
   </nav>
+  <!-- ...existing code... -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
+<!-- ...existing code... -->
 
   <script src="script.js"></script>
 </body>
